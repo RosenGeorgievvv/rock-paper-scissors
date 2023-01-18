@@ -45,18 +45,29 @@ function showResult(score, playerChoice, computerChoice) {
 
 
 function onClickRPS(playerChoice) {
-
+    const computerChoice = getComputerChoice()
+    const score = getResult(playerChoice.value, computerChoice)
+    showResult(score, playerChoice.value, computerChoice)
 }
 
 
-
 function playGame() {
-
+    let rpsButtons = document.querySelectorAll('.rpsButton')
+    rpsButtons.forEach(rpsButton => {
+        rpsButton.onclick = () => onClickRPS(rpsButton)
+    })
+    let endGameButton = document.getElementById('endGameButton')
+    endGameButton.onclick = () => endGame()
 }
 
 
 function endGame() {
-
+let playerScore = document.getElementById('player-score')
+let hands = document.getElementById('hands')
+let result = document.getElementById('result')
+playerScore.innerText = ''
+hands.innerText = ''
+result.innerText = ''
 }
 
 playGame()
